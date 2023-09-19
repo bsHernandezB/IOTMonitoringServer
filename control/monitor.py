@@ -17,6 +17,7 @@ def analyze_data():
     # Si el promedio se excede de los límites, se envia un mensaje de alerta.
 
     print("Calculando alertas...")
+    setup_mqtt()
 
     data = Data.objects.filter(
         base_time__gte=datetime.now() - timedelta(hours=1),
