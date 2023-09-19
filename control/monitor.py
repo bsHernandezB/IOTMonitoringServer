@@ -96,14 +96,14 @@ def analyze_data():
 
         if alert:
             if item["check_value"] > max_value:
-                message = "ALERT {} {} {}".format("amaneció",variable, max_value)
+                message = "ALERT {} {} {}".format("amanecio",variable, max_value)
                 topic = '{}/{}/{}/{}/in'.format(country, state, city, user)
                 print(datetime.now(), "Sending alert to {} {}".format(topic, variable))
                 client.publish(topic, message)
                 alerts += 1
 
             if item["check_value"] < min_value:
-                message = "ALERT {} {} {}".format("anocheció",variable, min_value)
+                message = "ALERT {} {} {}".format("anochecio",variable, min_value)
                 topic = '{}/{}/{}/{}/in'.format(country, state, city, user)
                 print(datetime.now(), "Sending alert to {} {}".format(topic, variable))
                 client.publish(topic, message)
