@@ -19,7 +19,7 @@ def analyze_data():
     print("Calculando alertas...")
 
     data = Data.objects.filter(
-        # base_time__gte=datetime.now() - timedelta(hours=1))
+        base_time__gte=datetime.now() - timedelta(hours=1),
         measurement_id=3)
     aggregation = data.annotate(check_value=Avg('avg_value')) \
         .select_related('station', 'measurement') \
@@ -47,6 +47,7 @@ def analyze_data():
         user = item['station__user__username']
 
         print(variable)
+        print(item["check_value"])
 
         if item["check_value"] > max_value or item["check_value"] < min_value:
             alert = True
